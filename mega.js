@@ -12,8 +12,8 @@ const upload = (data, name) => {
                 data.pipe(storage.upload({name: name, allowUploadBuffering: true}));
                 storage.on("add", (file) => {
                     file.link((err, url) => {
-                        if (err) throw err;
-                        storage.close()
+                        if (err) reject(err);
+                        storage.close();
                         resolve(url);
                     });
                 });
