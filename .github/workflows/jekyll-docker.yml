@@ -1,19 +1,21 @@
-name: Casper tech here 
+name: Casper tech here
 
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - "index.html"
   pull_request:
     branches: [ "main" ]
+    paths:
+      - "index.html"
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
-    - name: casper tech 
+    - name: casper tech  
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
